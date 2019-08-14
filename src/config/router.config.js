@@ -1,15 +1,17 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
+import { HelloWorld} from '@/views/HelloWorld'
 
 export const asyncRouterMap = [
 
   {
     path: '/',
     name: 'index',
-    component: BasicLayout,
+    component: HelloWorld,
     meta: { title: '首页' },
-    redirect: '/dashboard/workplace',
+    // redirect: '/dashboard/workplace',
+    redirect: '/',
     children: [
       // dashboard
       {
@@ -17,13 +19,13 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse }, // , permission: [ 'dashboard' ]
         children: [
           {
             path: '/dashboard/analysis',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: '分析页', keepAlive: false, permission: [ 'dashboard' ] }
+            meta: { title: '分析页', keepAlive: false }//, permission: [ 'dashboard' ]
           },
           // 外部链接
           {
@@ -35,7 +37,7 @@ export const asyncRouterMap = [
             path: '/dashboard/workplace',
             name: 'Workplace',
             component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+            meta: { title: '工作台', keepAlive: true }// , permission: [ 'dashboard' ]
           }
         ]
       },
