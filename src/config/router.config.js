@@ -1,15 +1,18 @@
 // eslint-disable-next-line
 import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/layouts'
 import { bxAnaalyse } from '@/core/icons'
+import Hello from '@/views/Hello'
 
 export const asyncRouterMap = [
 
   {
     path: '/',
     name: 'index',
-    component: BasicLayout,
+    // component: BasicLayout,
+    component: Hello,
     meta: { title: '首页' },
-    redirect: '/dashboard/workplace',
+    // redirect: '/dashboard/workplace',
+    redirect: '/',
     children: [
       // dashboard
       {
