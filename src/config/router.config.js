@@ -20,12 +20,6 @@ export const asyncRouterMap = [
         meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
         children: [
           {
-            path: '/hello',
-            name: 'hello',
-            component: () => import('@/views/Hello'),
-            meta: { title: 'HelloWorld' }
-          },
-          {
             path: '/dashboard/analysis',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
@@ -53,12 +47,6 @@ export const asyncRouterMap = [
         component: PageView,
         meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
         children: [
-          {
-            path: '/hello1',
-            name: 'hello1',
-            component: () => import('@/views/Hello'),
-            meta: { title: 'HelloWorld1' }
-          },
           {
             path: '/form/base-form',
             name: 'BaseForm',
@@ -328,6 +316,21 @@ export const asyncRouterMap = [
             ]
           }
         ]
+      },
+      {
+        path: '/test/hello',
+        name: 'testHello',
+        component: () => import('@/views/test/Hello'),
+        meta: { title: 'test' }
+        // redirect: '/test/hello',
+        // children: [
+        //   {
+        //     path: '/test/hello',
+        //     name: 'TestHello',
+        //     component: () => import('@/views/test/Hello'),
+        //     meta: { title: 'test', keepAlive: true }
+        //   }
+        // ]
       }
     ]
   },
