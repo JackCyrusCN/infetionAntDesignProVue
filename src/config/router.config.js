@@ -8,12 +8,9 @@ export const asyncRouterMap = [
     path: '/',
     name: 'index',
     component: BasicLayout,
-   // component: Hello,
     meta: { title: '首页' },
-    // redirect: '/dashboard/workplace',
     redirect: '/dashboard/workplace',
     children: [
-
       // dashboard
       {
         path: '/dashboard',
@@ -57,10 +54,10 @@ export const asyncRouterMap = [
         meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
         children: [
           {
-            path: '/hello',
-            name: 'hello',
+            path: '/hello1',
+            name: 'hello1',
             component: () => import('@/views/Hello'),
-            meta: { title: 'HelloWorld' }
+            meta: { title: 'HelloWorld1' }
           },
           {
             path: '/form/base-form',
