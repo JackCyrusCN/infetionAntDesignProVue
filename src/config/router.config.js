@@ -8,12 +8,13 @@ export const asyncRouterMap = [
   {
     path: '/',
     name: 'index',
-    // component: BasicLayout,
-    component: Hello,
+    component: BasicLayout,
+   // component: Hello,
     meta: { title: '首页' },
     // redirect: '/dashboard/workplace',
-    redirect: '/',
+    redirect: '/dashboard/workplace',
     children: [
+
       // dashboard
       {
         path: '/dashboard',
@@ -22,6 +23,12 @@ export const asyncRouterMap = [
         component: RouteView,
         meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
         children: [
+          {
+            path: '/hello',
+            name: 'hello',
+            component: () => import('@/views/Hello'),
+            meta: {title: 'HelloWorld' },
+          },
           {
             path: '/dashboard/analysis',
             name: 'Analysis',
