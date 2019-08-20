@@ -349,6 +349,21 @@ export const asyncRouterMap = [
         //     meta: { title: 'test', keepAlive: true }
         //   }
         // ]
+      },
+      {
+        path: '/test/modal',
+        name: 'testModal',
+        component: () => import('@/views/test/Modal'),
+        meta: { title: 'modal' }
+        // redirect: '/test/hello',
+        // children: [
+        //   {
+        //     path: '/test/hello',
+        //     name: 'TestHello',
+        //     component: () => import('@/views/test/Hello'),
+        //     meta: { title: 'test', keepAlive: true }
+        //   }
+        // ]
       }
     ]
   },
