@@ -13,7 +13,7 @@
         <!-- @add="handleAdd" -->
       </a-col>
       <a-col :span="19">
-        <a-button type="primary">查看病例</a-button>
+        <a-button type="primary" @click="showModal">查看病例</a-button>
         <s-table
           ref="table"
           size="small"
@@ -111,6 +111,7 @@
       </a-row>
       <a-divider />
     </a-drawer>
+    <case-modal ref="modal" />
   </a-card>
 </template>
 
@@ -220,6 +221,9 @@ export default {
     })
   },
   methods: {
+    showModal () {
+      this.$refs.modal.showModal()
+    },
     onClose () {
       this.visible = false
     },

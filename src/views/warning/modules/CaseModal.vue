@@ -18,6 +18,8 @@
         <b>有菌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
         <a-icon type="medicine-box" theme="twoTone" />
         <b>抗生素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+        住院月数:
+        <a-input-number :min="1" :max="100" v-model="monthValue" @change="fetch()" size="1"/>
         <div class="parent">
           <div class="child" v-for="(item, key) in 30" :key="key">{{ item }}</div>
         </div>
@@ -107,6 +109,7 @@ import { getBreathMachine, getFever, getIntubationCenter, getIntubationUrinary, 
 export default {
   data () {
     return {
+      monthValue: 1,
       loading: false,
       visible: false,
       breathMachine: [],
@@ -120,6 +123,10 @@ export default {
     }
   },
   methods: {
+    showModal () {
+      this.fetch()
+      this.visible = true
+    },
     callback (key) {
       console.log(key)
     },
@@ -129,33 +136,34 @@ export default {
     showValue () {
       console.log(this.breathMachine)
       console.log(JSON.stringify(this.breathMachine))
+    },
+    fetch () {
+      getBreathMachine().then(res => {
+        this.breathMachine = res.result.data
+      })
+      getFever().then(res => {
+        this.fever = res.result.data
+      })
+      getIntubationCenter().then(res => {
+        this.intubationCenter = res.result.data
+      })
+      getIntubationUrinary().then(res => {
+        this.intubationUrinary = res.result.data
+      })
+      getRoutinBlood().then(res => {
+        this.routinBlood = res.result.data
+      })
+      getRoutinUrinary().then(res => {
+        this.routinUrinary = res.result.data
+      })
+      getBacteria().then(res => {
+        this.bacteria = res.result.data
+      })
+      getAntibiotic().then(res => {
+        this.antibiotic = res.result.data
+      })
+      // Promise.all([p1, p2, p3, p4, p5, p6, p7, p8])
     }
-  },
-  mounted () {
-    getBreathMachine().then(res => {
-      this.breathMachine = res.result.data
-    })
-    getFever().then(res => {
-      this.fever = res.result.data
-    })
-    getIntubationCenter().then(res => {
-      this.intubationCenter = res.result.data
-    })
-    getIntubationUrinary().then(res => {
-      this.intubationUrinary = res.result.data
-    })
-    getRoutinBlood().then(res => {
-      this.routinBlood = res.result.data
-    })
-    getRoutinUrinary().then(res => {
-      this.routinUrinary = res.result.data
-    })
-    getBacteria().then(res => {
-      this.bacteria = res.result.data
-    })
-    getAntibiotic().then(res => {
-      this.antibiotic = res.result.data
-    })
   }
 }
 </script>
