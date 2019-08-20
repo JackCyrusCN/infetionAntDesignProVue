@@ -6,10 +6,30 @@ const api = {
   service: '/service',
   permission: '/permission',
   permissionNoPager: '/permission/no-pager',
-  orgTree: '/org/tree'
+  orgTree: '/org/tree',
+  warningTree: '/warning/tree',
+  warning: '/warning'
 }
 
 export default api
+
+// 获取预警树
+export function getWarningTree (parameter) {
+  return axios({
+    url: api.warningTree,
+    method: 'get',
+    params: parameter
+  })
+}
+
+// 获取预警List
+export function getWarningList (parameter) {
+  return axios({
+    url: api.warning,
+    method: 'get',
+    params: parameter
+  })
+}
 
 export function getUserList (parameter) {
   return axios({
