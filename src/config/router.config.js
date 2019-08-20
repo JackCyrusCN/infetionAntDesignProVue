@@ -9,23 +9,54 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: '首页' },
-    redirect: '/dashboard/workplace',
+    redirect: '/warning/warning-list',
     children: [
+      // 全院概况
+      {
+        path: '/general/general',
+        name: 'general',
+        component: () => import('@/views/general/General'),
+        meta: { title: '全院概况', icon: 'home' }
+      },
+
       // 预警
       {
-        path: '/warning',
-        name: 'otherPage',
-        component: PageView,
-        meta: { title: '预警', icon: 'slack', permission: ['dashboard'] },
-        redirect: '/warning/warning-list',
-        children: [
-          {
-            path: '/warning/warning-list',
-            name: '预警',
-            component: () => import('@/views/warning/WarningList'),
-            meta: { title: '预警列表', icon: 'tool', keepAlive: true, permission: ['dashboard'] }
-          }
-        ]
+        path: '/warning/warning-list',
+        name: 'warning',
+        component: () => import('@/views/warning/WarningList'),
+        meta: { title: '预警', icon: 'exclamation-circle' }
+      },
+
+      // 综合监测
+      {
+        path: '/monitor/comprehensive',
+        name: 'compMonitor',
+        component: () => import('@/views/monitor/Comprehensive'),
+        meta: { title: '综合监测', icon: 'cluster' }
+      },
+
+      // 目标监测
+      {
+        path: '/monitor/target',
+        name: 'targetMonitor',
+        component: () => import('@/views/monitor/Target'),
+        meta: { title: '目标监测', icon: 'eye' }
+      },
+
+      // 干预
+      {
+        path: '/intervene/intervene',
+        name: 'intervene',
+        component: () => import('@/views/intervene/Intervene'),
+        meta: { title: '干预', icon: 'highlight' }
+      },
+
+      // 病例
+      {
+        path: '/case/case',
+        name: 'case',
+        component: () => import('@/views/case/Case'),
+        meta: { title: '病例', icon: 'folder-open' }
       },
 
       // dashboard

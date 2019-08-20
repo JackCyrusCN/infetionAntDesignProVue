@@ -1,5 +1,5 @@
 <template>
   <div>
-    <p>综合监测</p>
+    <p>干预</p>
   </div>
 </template>

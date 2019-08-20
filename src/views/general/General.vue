@@ -1,5 +1,5 @@
 <template>
   <div>
-    <p>综合监测</p>
+    <p>全院概况</p>
   </div>
 </template>
