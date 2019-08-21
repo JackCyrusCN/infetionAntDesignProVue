@@ -24,7 +24,7 @@ export const asyncRouterMap = [
         path: '/warning/warning-list',
         name: 'warning',
         component: () => import('@/views/warning/WarningList'),
-        meta: { title: '预警', icon: 'exclamation-circle' }
+        meta: { title: '预警', icon: 'alert' }
       },
 
       // 综合监测
