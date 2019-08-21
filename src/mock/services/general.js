@@ -5,7 +5,7 @@ const generalList = () => {
   return builder(
     Mock.mock({
       'data|30': [{
-        'key': 'word(8)',
+        'key': '@word(8)',
         'dept': '@deptdt(@increment()',
         'inNum': '@natural( 25, 50 )',
         'infectionNum': '@natural( 0, 25 )',
