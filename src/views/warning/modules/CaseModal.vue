@@ -3,25 +3,25 @@
     <a-tabs defaultActiveKey="1" @change="callback">
       <a-tab-pane tab="摘要" key="1">
         <a-row>
-          <b>住院月数:</b>
-          <a-input-number :min="1" :max="100" v-model="monthValue" @change="fetch()" />
+          <a-icon type="hdd" theme="twoTone" />
+          <b>呼吸机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="fire" theme="twoTone" />
+          <b>发热&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="api" theme="twoTone" />
+          <b>中心静脉插管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="pushpin" theme="twoTone" />
+          <b>泌尿道插管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="heart" theme="twoTone" />
+          <b>血常规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="filter" theme="twoTone" />
+          <b>尿常规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="experiment" theme="twoTone" />
+          <b>有菌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+          <a-icon type="medicine-box" theme="twoTone" />
+          <b>抗生素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
           <div style="float: right;">
-            <a-icon type="hdd" theme="twoTone" />
-            <b>呼吸机&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="fire" theme="twoTone" />
-            <b>发热&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="api" theme="twoTone" />
-            <b>中心静脉插管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="pushpin" theme="twoTone" />
-            <b>泌尿道插管&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="heart" theme="twoTone" />
-            <b>血常规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="filter" theme="twoTone" />
-            <b>尿常规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="experiment" theme="twoTone" />
-            <b>有菌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <a-icon type="medicine-box" theme="twoTone" />
-            <b>抗生素&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+            <b>住院月数:</b>
+            <a-input-number :min="1" :max="100" v-model="monthValue" @change="fetch()" />
           </div>
         </a-row>
         <div class="parent">
