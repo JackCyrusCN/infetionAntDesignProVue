@@ -39,8 +39,59 @@ export const asyncRouterMap = [
       {
         path: '/monitor/target',
         name: 'targetMonitor',
-        component: () => import('@/views/monitor/Target'),
-        meta: { title: '目标监测', icon: 'eye' }
+        component: RouteView,
+        meta: { title: '目标监测', icon: 'eye' },
+        redirect: '/monitor/target/',
+        children: [
+          {
+            path: '/monitor/target/surgery',
+            name: 'Surgery',
+            component: () => import('@/views/monitor/target/Surgery'),
+            meta: { title: '外科手术监测', keepAlive: false }
+          },
+          {
+            path: '/monitor/target/icu',
+            name: 'ICU',
+            component: () => import('@/views/monitor/target/ICU'),
+            meta: { title: 'ICU病人监测', keepAlive: false }
+          },
+          {
+            path: '/dashboard/newborn',
+            name: 'Newborn',
+            component: () => import('@/views/monitor/target/Newborn'),
+            meta: { title: '高危新生儿监测', keepAlive: false }
+          },
+          {
+            path: '/dashboard/antibacterial',
+            name: 'Antibacterial',
+            component: () => import('@/views/monitor/target/Antibacterial'),
+            meta: { title: '抗菌药物监测', keepAlive: false }
+          }
+        ]
+      },
+
+      // 感染登记
+      {
+        path: '/register',
+        name: 'register',
+        component: RouteView,
+        meta: { title: '感染登记', icon: 'highlight' },
+        redirect: '',
+        children: [
+          {
+            path: '/register/case',
+            name: 'case',
+            component: () => import('@/views/register/Case'),
+            meta: { title: '感染病历登记', keepAlive: false }
+          },
+          {
+            path: '/register/case/add',
+            name: 'CaseAdd',
+            component: () => import('@/views/register/CaseAdd'),
+            meta: { title: '感染病历登记新增', keepAlive: false },
+            hidden: true
+          }
+        ]
       },
 
       // 干预
@@ -54,7 +105,7 @@ export const asyncRouterMap = [
       // 病例
       {
         path: '/case/case',
-        name: 'case',
+        name: 'caseView',
         component: () => import('@/views/case/Case'),
         meta: { title: '病例', icon: 'folder-open' }
       },
@@ -444,7 +495,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')

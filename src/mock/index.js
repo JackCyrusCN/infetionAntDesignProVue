@@ -15,6 +15,8 @@ if (process.env.NODE_ENV !== 'production' || process.env.VUE_APP_PREVIEW === 'tr
   require('./services/warning')
   require('./services/general')
   require('./services/message')
+  require('./services/register')
+  require('./services/intervene')
 
   Mock.setup({
     timeout: 800 // setter delay time

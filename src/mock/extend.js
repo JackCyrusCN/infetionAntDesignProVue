@@ -24,5 +24,9 @@ Random.extend({
       }
     }
     return arr[i - 1]
+  },
+  genderdt: function () {
+    const arr = ['0', '1', '2']
+    return this.pick(arr)
   }
 })
