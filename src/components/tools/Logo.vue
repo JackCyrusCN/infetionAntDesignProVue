@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <router-link :to="{name:'warning'}">
+    <router-link :to="{name:'general'}">
       <img alt="Eastwill logo" style="width: 64px; height: 64px" src="../../assets/logo.jpg">
       <h1 v-if="showTitle">{{ title }}</h1>
     </router-link>

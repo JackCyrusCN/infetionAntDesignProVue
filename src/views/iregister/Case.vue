@@ -15,34 +15,10 @@
                 <range-date @change="handleDateChange" ref="createTime"></range-date>
               </a-form-item>
             </a-col>
-            <template v-if="advanced">
-              <a-col :md="12" :sm="24">
-                <a-form-item
-                  label="其他查询1"
-                  :labelCol="{span: 4}"
-                  :warpperCol="{span: 18, offset: 2}"
-                >
-                  <a-input />
-                </a-form-item>
-              </a-col>
-              <a-col :md="12" :sm="24">
-                <a-form-item
-                  label="其他查询2"
-                  :labelCol="{span: 4}"
-                  :warpperCol="{span: 18, offset: 2}"
-                >
-                  <a-input />
-                </a-form-item>
-              </a-col>
-            </template>
           </div>
-          <span style="float: right; margin-top: 3px;">
+          <span style="float: left; margin-top: 3px;">
             <a-button type="primary" @click="search">查询</a-button>
             <a-button style="margin-left: 8px" @click="reset">重置</a-button>
-            <a @click="toggleAdvanced" style="margin-left: 8px">
-              {{ advanced ? '收起' : '展开' }}
-              <a-icon :type="advanced ? 'up' : 'down'" />
-            </a>
           </span>
         </a-row>
       </a-form>
@@ -198,13 +174,6 @@ export default {
   methods: {
     onSelectChange (selectedRowKeys) {
       this.selectedRowKeys = selectedRowKeys;
-    },
-    toggleAdvanced () {
-      this.advanced = !this.advanced;
-      if (!this.advanced) {
-        this.queryParams.createTimeFrom = "";
-        this.queryParams.createTimeTo = "";
-      }
     },
     view (record) {
       this.userInfo.data = record;

@@ -44,16 +44,16 @@ export const asyncRouterMap = [
         redirect: '/monitor/target/',
         children: [
           {
+            path: '/monitor/target/icu',
+            name: 'ICU',
+            component: () => import('@/views/monitor/target/ICU/ICU'),
+            meta: { title: 'ICU病人监测', keepAlive: false }
+          },
+          {
             path: '/monitor/target/surgery',
             name: 'Surgery',
             component: () => import('@/views/monitor/target/Surgery'),
             meta: { title: '外科手术监测', keepAlive: false }
-          },
-          {
-            path: '/monitor/target/icu',
-            name: 'ICU',
-            component: () => import('@/views/monitor/target/ICU'),
-            meta: { title: 'ICU病人监测', keepAlive: false }
           },
           {
             path: '/dashboard/newborn',
@@ -72,22 +72,22 @@ export const asyncRouterMap = [
 
       // 感染登记
       {
-        path: '/register',
-        name: 'register',
+        path: '/iregister',
+        name: 'iregister',
         component: RouteView,
         meta: { title: '感染登记', icon: 'highlight' },
         redirect: '',
         children: [
           {
-            path: '/register/case',
+            path: '/iregister/case',
             name: 'case',
-            component: () => import('@/views/register/Case'),
+            component: () => import('@/views/iregister/Case'),
             meta: { title: '感染病历登记', keepAlive: false }
           },
           {
-            path: '/register/case/add',
+            path: '/iregister/case/add',
             name: 'CaseAdd',
-            component: () => import('@/views/register/CaseAdd'),
+            component: () => import('@/views/iregister/CaseAdd'),
             meta: { title: '感染病历登记新增', keepAlive: false },
             hidden: true
           }
@@ -437,15 +437,6 @@ export const asyncRouterMap = [
         name: 'testModal',
         component: () => import('@/views/test/Modal'),
         meta: { title: 'modal' }
-        // redirect: '/test/hello',
-        // children: [
-        //   {
-        //     path: '/test/hello',
-        //     name: 'TestHello',
-        //     component: () => import('@/views/test/Hello'),
-        //     meta: { title: 'test', keepAlive: true }
-        //   }
-        // ]
       }
     ]
   },
