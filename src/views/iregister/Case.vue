@@ -34,7 +34,7 @@
         @change="handleTableChange"
       >
         <template slot="operation" slot-scope="text, record">
-          <a href="javascript:;" @click="addReport(record.pid, record.patientName)">新增</a>
+          <a href="javascript:;" @click="addReport(record.pid, record.patientName)">登记</a>
         </template>
         <a-table
           slot="expandedRowRender"
@@ -276,7 +276,7 @@ export default {
 
     addReport (pid, patientName) {
       console.log(patientName)
-      this.$router.push({ path: '/register/case/add', query: { pid: pid, userName: patientName } })
+      this.$router.push({ path: '/iregister/case/add', query: { pid: pid, userName: patientName } })
     },
   }
 };

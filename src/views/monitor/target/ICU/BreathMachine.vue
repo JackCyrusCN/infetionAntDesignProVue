@@ -49,7 +49,7 @@
         :data="loadData"
         :alert="{ show: true, clear: true }"
         :rowSelection="{ selectedRowKeys: this.selectedRowKeys, onChange: this.onSelectChange }"
-        :scroll="{ x: '300%', y: '360px' }"
+        :scroll="{ x: '200%', y: '300px' }"
       >
         <template v-for="(col, index) in columns" :slot="col.dataIndex" slot-scope="text, record">
           <div :key="index">
@@ -106,61 +106,58 @@ export default {
         {
           title: '住院号',
           dataIndex: 'zyid',
-          fixed: 'left'
+          fixed: 'left',
+          width: '120px'
         },
         {
           title: '姓名',
           dataIndex: 'pname',
-          scopedSlots: { customRender: 'pname' }
+          width: '100px'
         },
         {
           title: '诊断',
           dataIndex: 'diagnose',
-          scopedSlots: { customRender: 'diagnose' }
+          width: '180px'
         },
         {
           title: '入院时间',
           dataIndex: 'admissionDate',
-          scopedSlots: { customRender: 'admissionDate' }
+          width: '180px'
         },
         {
           title: '入ICU时间',
           dataIndex: 'admIcuDate',
-          scopedSlots: { customRender: 'admIcuDate' }
+          width: '180px'
         },
         {
           title: '住院天数',
           dataIndex: 'days',
-          scopedSlots: { customRender: 'days' }
+          width: '60px'
         },
         {
           title: '使用呼吸机原因',
           dataIndex: 'reason',
-          scopedSlots: { customRender: 'reason' }
+          width: '300px'
         },
         {
-          title: '使用呼吸机方式',
+          title: '方式',
           dataIndex: 'methods',
-          sorter: true,
-          needTotal: true,
-          scopedSlots: { customRender: 'callNo' }
+          width: '30px'
         },
         {
           title: '用呼吸机时间',
           dataIndex: 'startDate',
-          needTotal: true,
-          scopedSlots: { customRender: 'startDate' }
+          width: '180px'
         },
         {
           title: '停呼吸机时间',
           dataIndex: 'endDate',
-          sorter: true,
-          scopedSlots: { customRender: 'endDate' }
+          width: '180px'
         },
         {
           table: '操作',
           dataIndex: 'action',
-          width: '60px',
+          width: '80px',
           scopedSlots: { customRender: 'action' }
         }
       ],
