@@ -1,48 +1,23 @@
 <template>
-  <a-table :columns="columns" :dataSource="data" :scroll="{ x: '100%' }">
-    <a slot="action" slot-scope="text" href="javascript:;">action</a>
-  </a-table>
+  <div>
+    <div id="printMe" style="background:red;">
+      <p>葫芦娃，葫芦娃</p>
+      <p>一根藤上七朵花</p>
+      <p>小小树藤是我家 啦啦啦啦</p>
+      <p>叮当当咚咚当当 浇不大</p>
+      <p>叮当当咚咚当当 是我家</p>
+      <p>啦啦啦啦</p>
+      <p>...</p>
+      <a-row>
+        <a-col :md="4" :sm="0"></a-col>
+        <a-col :md="2" :sm="4">住院号:</a-col>
+        <a-col :md="2" :sm="4">fgsd</a-col>
+        <a-col :md="2" :sm="4">姓名:</a-col>
+        <a-col :md="2" :sm="4">dasfdf</a-col>
+        <a-col :md="4" :sm="0"></a-col>
+      </a-row>
+    </div>
+
+    <button v-print="'#printMe'">Print local range</button>
+  </div>
 </template>
-<script>
-const columns = [
-  { title: 'Full Name', width: 100, dataIndex: 'name', key: 'name', fixed: 'left' },
-  { title: 'Age', width: 100, dataIndex: 'age', key: 'age', fixed: 'left' },
-  { title: 'Column 1', dataIndex: 'address', key: '1' },
-  { title: 'Column 2', dataIndex: 'address', key: '2' },
-  { title: 'Column 3', dataIndex: 'address', key: '3' },
-  { title: 'Column 4', dataIndex: 'address', key: '4' },
-  { title: 'Column 5', dataIndex: 'address', key: '5' },
-  { title: 'Column 6', dataIndex: 'address', key: '6' },
-  { title: 'Column 7', dataIndex: 'address', key: '7' },
-  { title: 'Column 8', dataIndex: 'address', key: '8' },
-  {
-    title: 'Action',
-    key: 'operation',
-    fixed: 'right',
-    width: 100,
-    scopedSlots: { customRender: 'action' },
-  },
-];
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York Parksdfadf afdsa fsdfdsafasdf',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 40,
-  address: 'London Park',
-}];
-
-
-export default {
-  data() {
-    return {
-      data,
-      columns,
-    }
-  }
-}
-</script>

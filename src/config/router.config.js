@@ -87,7 +87,14 @@ export const asyncRouterMap = [
           {
             path: '/iregister/case/add',
             name: 'CaseAdd',
-            component: () => import('@/views/iregister/CaseAdd'),
+            component: () => import('@/views/iregister/RegisterList'),
+            meta: { title: '感染病历登记新增', keepAlive: false },
+            hidden: true
+          },
+          {
+            path: '/iregister/icu/add',
+            name: 'ICUAdd',
+            component: () => import('@/views/iregister/form/ICUTargetForm'),
             meta: { title: '感染病历登记新增', keepAlive: false },
             hidden: true
           }
