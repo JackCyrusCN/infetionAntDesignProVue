@@ -2,7 +2,7 @@ import Mock from 'mockjs2'
 import { builder } from '../util'
 
 const info = (options) => {
-  console.log('options', options)
+  console.log('mock_user_options', JSON.stringify(options))
   const userInfo = {
     'id': '4291d7da9005377ec9aec4a71ea837f',
     'name': '院感管理员',

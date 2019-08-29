@@ -13,17 +13,17 @@
           <span>{{ nickname() }}</span>
         </span>
         <a-menu slot="overlay" class="user-dropdown-menu-wrapper">
-          <a-menu-item key="0">
-            <router-link :to="{ name: 'center' }">
+          <a-menu-item key="0" disabled>
+            <!-- <router-link :to="{ name: 'center' }"> -->
               <a-icon type="user"/>
               <span>个人中心</span>
-            </router-link>
+            <!-- </router-link> -->
           </a-menu-item>
-          <a-menu-item key="1">
-            <router-link :to="{ name: 'settings' }">
+          <a-menu-item key="1" disabled>
+            <!-- <router-link :to="{ name: 'settings' }"> -->
               <a-icon type="setting"/>
               <span>账户设置</span>
-            </router-link>
+            <!-- </router-link> -->
           </a-menu-item>
           <a-menu-item key="2" disabled>
             <a-icon type="setting"/>

@@ -90,7 +90,7 @@
               type="dashed"
               icon="plus"
               @click="newMember"
-            >新增成员</a-button>
+            >新增记录</a-button>
           </a-card>
         </detail-list>
         <a-divider style="margin: 16px 0" />
