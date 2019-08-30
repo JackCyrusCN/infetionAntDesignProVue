@@ -8,7 +8,9 @@
       <p>ICU目标性监测</p>
       <ICU-Target></ICU-Target>
     </a-tab-pane>
-    <a-tab-pane tab="ICU患者呼吸机相关感染监测" key="3">ICU患者呼吸机相关感染监测</a-tab-pane>
+    <a-tab-pane tab="ICU患者呼吸机相关感染监测" key="3">
+      <Breath-Machine></Breath-Machine>
+    </a-tab-pane>
     <a-tab-pane tab="导尿管拔管指征评估表" key="4">导尿管拔管指征评估表</a-tab-pane>
     <a-tab-pane tab="呼吸机撤机指征评估表" key="5">呼吸机撤机指征评估表</a-tab-pane>
   </a-tabs>
@@ -17,6 +19,7 @@
 
 import CaseAdd from '@/views/iregister/CaseAdd'
 import ICUTarget from '@/views/iregister/list/ICUTarget'
+import BreathMachine from '@/views/iregister/list/BreathMachine'
 export default {
   data () {
     return {
@@ -24,7 +27,8 @@ export default {
   },
   components: {
     CaseAdd,
-    ICUTarget
+    ICUTarget,
+    BreathMachine
   },
   methods: {
     callback (key) {

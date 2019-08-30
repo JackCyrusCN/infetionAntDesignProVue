@@ -91,7 +91,11 @@
       :alert="{ show: true, clear: true }"
       :rowSelection="{ selectedRowKeys: this.selectedRowKeys, onChange: this.onSelectChange }"
     >
-      <template v-for="(col, index) in columns" :slot="col.dataIndex" slot-scope="text, record">
+      <template
+        v-for="(col, index) in columns"
+        :slot="col.dataIndex"
+        slot-scope="text, record"
+      >
         <div :key="index">
           <a-input
             v-if="record.editable"
@@ -236,7 +240,7 @@ export default {
       this.advanced = !this.advanced
     },
     addForm () {
-      this.$router.push({ path: '/iregister/icu/add' })
+      this.$router.push({ path: '/iregister/breathma/add' })
     }
   },
   watch: {

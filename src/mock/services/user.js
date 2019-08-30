@@ -162,6 +162,10 @@ const info = (options) => {
         'action': 'update',
         'describe': '修改',
         'defaultCheck': false
+      }, {
+        'action': 'delete',
+        'describe': '删除',
+        'defaultCheck': false
       }],
       'actionList': null,
       'dataAccess': null

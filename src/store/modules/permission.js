@@ -22,7 +22,7 @@ function hasPermission (permission, route) {
 }
 
 /**
- * 单账户多角色时，使用该方法可过滤角色不存在的菜单
+ * 单账户多角色时，用该方法可过滤角色不存在的菜单
  *
  * @param roles
  * @param route

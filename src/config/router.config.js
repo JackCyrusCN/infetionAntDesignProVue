@@ -9,11 +9,11 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: '首页' },
-    redirect: '/general/general',
+    redirect: '/general',
     children: [
       // 全院概况
       {
-        path: '/general/general',
+        path: '/general',
         name: 'general',
         component: () => import('@/views/general/General'),
         meta: { title: '全院概况', icon: 'home' }
@@ -97,10 +97,16 @@ export const asyncRouterMap = [
             component: () => import('@/views/iregister/form/ICUTargetForm'),
             meta: { title: '感染病历登记新增', keepAlive: false },
             hidden: true
+          },
+          {
+            path: '/iregister/breathma/add',
+            name: 'BreathMaAdd',
+            component: () => import('@/views/iregister/form/BreathMachineForm'),
+            meta: { title: '呼吸机登记新增', keepAlive: false },
+            hidden: true
           }
         ]
       },
-
       // 干预
       {
         path: '/intervene/intervene',

@@ -78,7 +78,7 @@ const user = {
       })
     },
 
-    // 登出
+    // 登 出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
         commit('SET_TOKEN', '')

@@ -194,7 +194,6 @@ export default {
           loginParams.password = md5(values.password)
           Login(loginParams)
             .then((res) => {
-              console.log('cres==>' + JSON.stringify(res))
               this.loginSuccess(res)
             })
             .catch(err => this.requestFailed(err))
@@ -252,8 +251,7 @@ export default {
       })
     },
     loginSuccess (res) {
-      console.log(res)
-      this.$router.push({ name: '/dashboard' })
+      this.$router.push({ name: '/general' })
       this.isLoginError = false
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
