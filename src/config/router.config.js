@@ -104,6 +104,13 @@ export const asyncRouterMap = [
             component: () => import('@/views/iregister/form/BreathMachineForm'),
             meta: { title: '呼吸机登记新增', keepAlive: false },
             hidden: true
+          },
+          {
+            path: '/iregister/intubation/add',
+            name: 'Intubation',
+            component: () => import('@/views/iregister/form/IntubationForm'),
+            meta: { title: '导尿管拔管指征评估', keepAlive: false },
+            hidden: true
           }
         ]
       },
