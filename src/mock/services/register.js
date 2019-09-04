@@ -11,6 +11,7 @@ const caseList = (options) => {
   const next = (pageNo >= totalPage ? (totalCount % pageSize) : pageSize) + 1
   for (let i = 1; i < next; i++) {
     result.push({
+      key: Mock.mock('@increment(1)'),
       pid: Mock.mock('@integer(10000000, 99999999)'),
       patientName: Mock.mock('@cword(3, 5)'),
       gender: Mock.mock('@genderdt()'),

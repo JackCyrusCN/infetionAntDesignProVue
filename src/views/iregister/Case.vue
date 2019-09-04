@@ -88,18 +88,21 @@ export default {
         {
           title: '住院号',
           dataIndex: 'pid',
+          key: 'pid',
           sorter: true,
           sortOrder: sortedInfo.columnKey === 'pid' && sortedInfo.order
         },
         {
           title: '患者姓名',
           dataIndex: 'patientName',
+          key: 'patientName',
           sorter: true,
           sortOrder: sortedInfo.columnKey === 'patientName' && sortedInfo.order
         },
         {
           title: '性别',
           dataIndex: 'gender',
+          key: 'gender',
           customRender: (text, row, index) => {
             switch (text) {
               case '0':
@@ -122,14 +125,17 @@ export default {
         },
         {
           title: '年龄',
-          dataIndex: 'age'
+          dataIndex: 'age',
+          key: 'age'
         },
         {
           title: '单位',
-          dataIndex: 'ageUnit'
+          dataIndex: 'ageUnit',
+          key: 'ageUnit'
         },
         {
           title: '入院时间',
+          key: 'admissionDate',
           dataIndex: 'admissionDate'
         },
         {

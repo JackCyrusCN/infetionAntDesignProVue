@@ -111,6 +111,13 @@ export const asyncRouterMap = [
             component: () => import('@/views/iregister/form/IntubationForm'),
             meta: { title: '导尿管拔管指征评估', keepAlive: false },
             hidden: true
+          },
+          {
+            path: '/iregister/evac-machine/add',
+            name: 'EvacMachine',
+            component: () => import('@/views/iregister/form/EvacMachineForm'),
+            meta: { title: '呼吸机撤机指征评估表', keepAlive: false },
+            hidden: true
           }
         ]
       },

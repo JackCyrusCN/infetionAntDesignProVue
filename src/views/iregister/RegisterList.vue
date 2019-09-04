@@ -14,7 +14,9 @@
     <a-tab-pane tab="导尿管拔管指征评估表" key="4">
       <Intubation></Intubation>
     </a-tab-pane>
-    <a-tab-pane tab="呼吸机撤机指征评估表" key="5">呼吸机撤机指征评估表</a-tab-pane>
+    <a-tab-pane tab="呼吸机撤机指征评估表" key="5">
+      <EvacMachine></EvacMachine>
+    </a-tab-pane>
   </a-tabs>
 </template>
 <script>
@@ -23,6 +25,7 @@ import CaseAdd from '@/views/iregister/CaseAdd'
 import ICUTarget from '@/views/iregister/list/ICUTarget'
 import BreathMachine from '@/views/iregister/list/BreathMachine'
 import Intubation from '@/views/iregister/list/Intubation'
+import EvacMachine from '@/views/iregister/list/EvacMachine'
 export default {
   data () {
     return {
@@ -32,7 +35,8 @@ export default {
     CaseAdd,
     ICUTarget,
     BreathMachine,
-    Intubation
+    Intubation,
+    EvacMachine
   },
   methods: {
     callback (key) {
