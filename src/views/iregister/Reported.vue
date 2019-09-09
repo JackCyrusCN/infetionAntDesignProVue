@@ -65,7 +65,6 @@
     </div>
 
     <div class="table-operator">
-      <a-button type="primary" icon="plus" @click="addForm()">新建</a-button>
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <a-menu slot="overlay">
           <a-menu-item key="1">
@@ -112,7 +111,8 @@
             </a-popconfirm>
           </span>
           <span v-else>
-            <a class="edit" @click="() => edit(record)">修改</a>
+            <a class="edit" @click="() => edit(record)" v-if="record.status === 0">修改</a>
+            <a class="view" @click="() => view(record)" v-if="record.status !== 0">查看</a>
             <a-divider type="vertical" />
             <a class="delete" @click="() => del(record)">删除</a>
           </span>
@@ -223,6 +223,17 @@ export default {
       // row.editable = true
       // row = Object.assign({}, row)
     },
+    view (row) {
+      const caseReport = {
+        infectionDiagCode: 'in13',
+        etiologicSpecName: '血液',
+        preFactor: [
+          'diabetes',
+          'antibiotic'
+        ]
+      }
+      this.$router.push({ path: '/iregister/reported/view', query: { caseReport: caseReport } })
+    },
     // eslint-disable-next-line
     del (row) {
       this.$confirm({
@@ -256,9 +267,6 @@ export default {
     },
     toggleAdvanced () {
       this.advanced = !this.advanced
-    },
-    addForm () {
-      this.$router.push({ path: '/iregister/infection-report/add' })
     }
   }
 }

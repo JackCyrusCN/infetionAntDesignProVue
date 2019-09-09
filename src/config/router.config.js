@@ -16,7 +16,7 @@ export const asyncRouterMap = [
         path: '/general',
         name: 'general',
         component: () => import('@/views/general/General'),
-        meta: { title: '全院概况', icon: 'home' }
+        meta: { title: '全院概况', icon: 'home', keepAlive: true }
       },
 
       // 预警
@@ -82,51 +82,79 @@ export const asyncRouterMap = [
             path: '/iregister/case',
             name: 'case',
             component: () => import('@/views/iregister/Case'),
-            meta: { title: '感染病历登记', keepAlive: false }
+            meta: { title: '感染病历登记', keepAlive: true }
+          },
+          {
+            path: '/iregister/reported',
+            name: 'reported',
+            component: () => import('@/views/iregister/Reported'),
+            meta: { title: '已上报登记管理', keepAlive: true }
+          },
+          {
+            path: '/iregister/reported/view',
+            name: 'reportedView',
+            component: () => import('@/views/iregister/ReportedView'),
+            meta: { title: '查看上报病历', keepAlive: true },
+            hidden: true
           },
           {
             path: '/iregister/case/add',
             name: 'CaseAdd',
             component: () => import('@/views/iregister/RegisterList'),
-            meta: { title: '感染病历登记新增', keepAlive: false },
+            meta: { title: '感染病历登记新增', keepAlive: true },
             hidden: true
           },
           {
             path: '/iregister/icu/add',
             name: 'ICUAdd',
-            component: () => import('@/views/iregister/form/ICUTargetForm'),
-            meta: { title: '感染病历登记新增', keepAlive: false },
+            component: () => import('@/views/iregister/form/ICUTargetAdd'),
+            meta: { title: '感染病历登记新增', keepAlive: true },
             hidden: true
           },
           {
             path: '/iregister/breathma/add',
             name: 'BreathMaAdd',
-            component: () => import('@/views/iregister/form/BreathMachineForm'),
-            meta: { title: '呼吸机登记新增', keepAlive: false },
+            component: () => import('@/views/iregister/form/BreathMachineAdd'),
+            meta: { title: '呼吸机登记新增', keepAlive: true },
             hidden: true
           },
           {
             path: '/iregister/intubation/add',
             name: 'Intubation',
-            component: () => import('@/views/iregister/form/IntubationForm'),
-            meta: { title: '导尿管拔管指征评估', keepAlive: false },
+            component: () => import('@/views/iregister/form/IntubationAdd'),
+            meta: { title: '导尿管拔管指征评估', keepAlive: true },
             hidden: true
           },
           {
             path: '/iregister/evac-machine/add',
             name: 'EvacMachine',
-            component: () => import('@/views/iregister/form/EvacMachineForm'),
-            meta: { title: '呼吸机撤机指征评估表', keepAlive: false },
+            component: () => import('@/views/iregister/form/EvacMachineAdd'),
+            meta: { title: '呼吸机撤机指征评估表', keepAlive: true },
             hidden: true
           },
           {
             path: '/iregister/infection-report/add',
             name: 'InfectionReport',
-            component: () => import('@/views/iregister/form/InfectionReportForm'),
+            component: () => import('@/views/iregister/form/InfectionReportAdd'),
+            meta: { title: '感染上报表', keepAlive: true },
+            hidden: true
+          },
+          {
+            path: '/iregister/infection-report/edit',
+            name: 'InfectionReport',
+            component: () => import('@/views/iregister/form/InfectionReportEdit'),
             meta: { title: '感染上报表', keepAlive: true },
             hidden: true
           }
         ]
+      },
+
+      // 上报审批
+      {
+        path: '/examine/examine-list',
+        name: 'examine',
+        component: () => import('@/views/examine/ExamineList'),
+        meta: { title: '上报审批', icon: 'issues-close' }
       },
       // 干预
       {
