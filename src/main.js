@@ -20,6 +20,7 @@ Vue.config.productionTip = false
 // mount axios Vue.$http and this.$http
 Vue.use(VueAxios)
 
+window.router = router
 new Vue({
   router,
   store,

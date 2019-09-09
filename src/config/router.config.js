@@ -118,6 +118,13 @@ export const asyncRouterMap = [
             component: () => import('@/views/iregister/form/EvacMachineForm'),
             meta: { title: '呼吸机撤机指征评估表', keepAlive: false },
             hidden: true
+          },
+          {
+            path: '/iregister/infection-report/add',
+            name: 'InfectionReport',
+            component: () => import('@/views/iregister/form/InfectionReportForm'),
+            meta: { title: '感染上报表', keepAlive: true },
+            hidden: true
           }
         ]
       },

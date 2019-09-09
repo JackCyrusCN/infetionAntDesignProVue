@@ -1,29 +1,19 @@
 <template>
   <div>
-    <h1 style="text-align:center;color:red">医院感染病例报告卡</h1>
-    <a-row>
-      <a-col :md="4" :sm="0"></a-col>
-      <a-col :md="2" :sm="4" v-bind="alignRight">住院号:</a-col>
-      <a-col :md="2" :sm="4" v-bind="alignLeft">{{ this.$route.query.pid }}</a-col>
-      <a-col :md="2" :sm="4" v-bind="alignRight">姓名:</a-col>
-      <a-col :md="2" :sm="4" v-bind="alignLeft">{{ this.$route.query.userName }}</a-col>
-      <a-col :md="4" :sm="0"></a-col>
-    </a-row>
-    <a-row>
-      <a-col :md="6" :sm="4"></a-col>
-      <a-col :md="2" :sm="4" v-bind="alignCenter">
-        <a-button type="danger" @click="handleSubmit">保存</a-button>
-      </a-col>
-      <a-col :md="2" :sm="4" v-bind="alignCenter">
-        <a-button type="primary" @click="print()">打印</a-button>
-      </a-col>
-      <a-col :md="6" :sm="4"></a-col>
-    </a-row>
-    <div>
+    <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
       <a-form :form="form">
-        <a-form-item v-bind="formItemLayout" label="感染诊断">
+        <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center">
+          <a-button htmlType="submit" type="primary" @click="handleSubmit()">提交</a-button>
+          <a-button style="margin-left: 8px" @click="print()">打印</a-button>
+          <a-button style="margin-left: 8px" @click="goBack()">返回</a-button>
+        </a-form-item>
+        <a-form-item
+          v-bind="formItemLayout"
+          label="感染诊断"
+          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        >
           <a-select
-            defaultValue="下呼吸道感染"
             style="width: 240px"
             v-model="caseReport.infectionDiagCode"
           >
@@ -50,16 +40,31 @@
             <a-select-option value="in21">婴儿脓疱病</a-select-option>
           </a-select>
         </a-form-item>
-        <a-form-item v-bind="formItemLayout" label="病原学检查">
+        <a-form-item
+          v-bind="formItemLayout"
+          label="病原学检查"
+          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        >
           <a-radio-group name="radioGroup" :defaultValue="1" v-model="caseReport.etiologicEx">
             <a-radio :value="1">是</a-radio>
             <a-radio :value="0">否</a-radio>
           </a-radio-group>
         </a-form-item>
-        <a-form-item v-bind="formItemLayout" label="标本名称">
+        <a-form-item
+          v-bind="formItemLayout"
+          label="标本名称"
+          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        >
           <a-input placeholder="标本名称" style="width: 200px" v-model="caseReport.etiologicSpecName" />
         </a-form-item>
-        <a-form-item v-bind="formItemLayout" label="易感因素">
+        <a-form-item
+          v-bind="formItemLayout"
+          label="易感因素"
+          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        >
           <div>
             <div :style="{ borderBottom: '1px solid #E9E9E9'}">
               <a-checkbox
@@ -68,19 +73,25 @@
                 :checked="checkAll"
               >{{ checkAllName }}</a-checkbox>
             </div>
-            <a-checkbox-group :options="plainOptions" v-model="checkedList" @change="onChange" />
+            <a-checkbox-group :options="plainOptions" v-model="caseReport.preFactor" @change="onChange" />
             <!--checkedList caseReport.preFactor-->
           </div>
         </a-form-item>
-        <a-form-item v-bind="formItemLayout" label="备注">
+        <a-form-item
+          v-bind="formItemLayout"
+          label="备注"
+          :labelCol="{lg: {span: 7}, sm: {span: 7}}"
+          :wrapperCol="{lg: {span: 10}, sm: {span: 17} }"
+        >
           <a-textarea
             placeholder="备注"
             :autosize="{ minRows: 2, maxRows: 6 }"
             v-model="caseReport.preFactorElse"
           />
         </a-form-item>
+
       </a-form>
-    </div>
+    </a-card>
   </div>
 </template>
 
@@ -104,28 +115,28 @@ const plainOptions = [
   { label: '手术', value: 'surgery' },
   { label: '其它', value: 'else' }
 ]
-const defaultCheckedList = [
-  'diabetes',
-  'antibiotic',
-  'cirrhosis',
-  'drug-addict',
-  'radiotherapy',
-  'immunosuppressor',
-  'ventilator',
-  'surgery',
-  'else'
-]
+// const defaultCheckedList = [
+//   // 'diabetes',
+//   // 'antibiotic',
+//   // 'cirrhosis',
+//   // 'drug-addict',
+//   // 'radiotherapy',
+//   // 'immunosuppressor',
+//   // 'ventilator',
+//   // 'surgery',
+//   // 'else'
+// ]
 export default {
   data () {
     return {
-      caseReport: {
-
-      },
+      // caseReport: {
+      //   infectionDiagCode: this.$route.query.caseReport.infectionDiagCode
+      // },
+      caseReport: this.$route.query.caseReport,
       form: this.$form.createForm(this),
       pid: '',
       patientName: '',
       checkAllName: '全选',
-      checkedList: defaultCheckedList,
       indeterminate: true,
       checkAll: false,
       plainOptions,
@@ -143,6 +154,9 @@ export default {
         style: [{ 'text-align': 'center' }]
       }
     }
+  },
+  computed: {
+
   },
   methods: {
     onChange (checkedList) {
@@ -167,7 +181,7 @@ export default {
       if (this.tseq !== '') {
         this.caseReport.seq = this.tseq
       }
-      this.caseReport.preFactor = this.checkedList
+      // this.caseReport.preFactor = this.checkedList
       this.$post('infection/caseReport', {
         ...this.caseReport
       }).then((r) => {
@@ -184,10 +198,16 @@ export default {
     },
     init () {
       this.tseq = ''
+    },
+    goBack () {
+      this.$router.back()
     }
   },
   mounted () {
     this.init()
+    console.log('1')
+    console.log('query==>' + JSON.stringify(this.$route.query.caseReport))
+    console.log('2')
   }
 }
 </script>
