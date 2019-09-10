@@ -112,7 +112,8 @@
             </a-popconfirm>
           </span>
           <span v-else>
-            <a class="edit" @click="() => edit(record)">修改</a>
+            <a class="edit" @click="() => edit(record)" v-if="record.status === 0">修改</a>
+            <a class="view" @click="() => view(record)" v-if="record.status !== 0">查看</a>
             <a-divider type="vertical" />
             <a class="delete" @click="() => del(record)">删除</a>
           </span>
@@ -124,6 +125,7 @@
 
 <script>
 import { STable } from '@/components'
+import { getReportedList } from '@/api/register'
 
 export default {
   name: 'TableList',
@@ -145,16 +147,17 @@ export default {
         },
         {
           title: '姓名',
-          dataIndex: 'description',
-          scopedSlots: { customRender: 'description' }
+          dataIndex: 'patientName',
+          scopedSlots: { customRender: 'patientName' },
+          width: 90
         },
         {
           title: '感染诊断',
-          dataIndex: 'callNo',
-          width: '150px',
+          dataIndex: 'infectionDiag',
+          width: 200,
           sorter: true,
           // needTotal: true,
-          scopedSlots: { customRender: 'callNo' }
+          scopedSlots: { customRender: 'infectionDiag' }
           // customRender: (text) => text + ' 次'
         },
         {
@@ -170,7 +173,7 @@ export default {
               case 1:
                 return <a-tag color="blue">审批</a-tag>
               case 2:
-                return <a-tag color="red">退回</a-tag>
+                return <a-tag color="red">排除</a-tag>
               default:
                 return '未知'
             }
@@ -192,10 +195,11 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$http.get('/service', {
-          params: Object.assign(parameter, this.queryParam)
-        }).then(res => {
-          return res.result
+        parameter = Object.assign(parameter, this.queryParam)
+        return getReportedList(parameter).then( r => {
+          return r.result
+        }).catch( err => {
+          consoel.log(err)
         })
       },
 
@@ -259,8 +263,20 @@ export default {
     },
     addForm () {
       this.$router.push({ path: '/iregister/infection-report/add' })
+    },
+    view (row) {
+      const caseReport = {
+        infectionDiagCode: 'in13',
+        etiologicSpecName: '血液',
+        preFactor: [
+          'diabetes',
+          'antibiotic'
+        ]
+      }
+      this.$router.push({ path: '/iregister/reported/view', query: { caseReport: caseReport } })
     }
   }
+
 }
 </script>
 

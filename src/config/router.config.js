@@ -153,8 +153,24 @@ export const asyncRouterMap = [
       {
         path: '/examine/examine-list',
         name: 'examine',
-        component: () => import('@/views/examine/ExamineList'),
-        meta: { title: '上报审批', icon: 'issues-close' }
+        component: RouteView, // () => import('@/views/examine/ExamineList'),
+        meta: { title: '上报审批', icon: 'issues-close' },
+        redirect: '/examine/examine-list',
+        children: [
+          {
+            path: '/examine/examine-list',
+            name: 'examineList',
+            component: () => import('@/views/examine/ExamineList'),
+            meta: { title: '上报审批', keepAlive: true }
+          },
+          {
+            path: '/examine/examine-form',
+            name: 'examineForm',
+            component: () => import('@/views/examine/ExamineForm'),
+            meta: { title: '处理审批', keepAlive: true },
+            hidden: true
+          }
+        ]
       },
       // 干预
       {

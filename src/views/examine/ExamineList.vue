@@ -2,6 +2,11 @@
   <a-card :bordered="false">
     <a-row :gutter="8">
       <a-col :span="5">
+        <a-radio-group name="radioGroup" @change="statusChange" v-model="tstatus">
+          <a-radio :value="0">待处理</a-radio>
+          <a-radio :value="1">审批</a-radio>
+          <a-radio :value="2">排除</a-radio>
+        </a-radio-group>
         <s-tree
           :dataSource="warningTree"
           :openKeys.sync="openKeys"
@@ -22,39 +27,23 @@
           :pagination="pagination"
           :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
         >
-          <!-- :rowSelection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }" -->
           <span slot="action" slot-scope="text, record">
-            <template v-if="$auth('table.update')">
+            <template v-if="tstatus === 0">
               <a @click="handleEdit(record)">审批</a>
               <a-divider type="vertical" />
+              <a @click="handleEliminate(record)">排除</a>
             </template>
-            <template v-if="$auth('table.update')">
-              <a @click="handleEdit(record)">退回</a>
-              <!-- <a-divider type="vertical" /> -->
+            <template v-if="tstatus === 1">
+              <p>审批</p>
             </template>
-            <!-- <a-dropdown>
-              <a class="ant-dropdown-link">
-                更多 <a-icon type="down" />
-              </a>
-              <a-menu slot="overlay">
-                <a-menu-item>
-                  <a href="javascript:;">详情</a>
-                </a-menu-item>
-                <a-menu-item v-if="$auth('table.disable')">
-                  <a href="javascript:;">禁用</a>
-                </a-menu-item>
-                <a-menu-item v-if="$auth('table.delete')">
-                  <a href="javascript:;">删除</a>
-                </a-menu-item>
-              </a-menu>
-            </a-dropdown>-->
+            <template v-if="tstatus === 2">
+              <p>排除</p>
+            </template>
           </span>
         </s-table>
       </a-col>
     </a-row>
 
-    <!-- <details-modal ref="modal" @close="handleSaveClose" /> -->
-    <!-- @ok="handleSaveOk" -->
     <a-drawer width="640" placement="right" :closable="false" @close="onClose" :visible="visible">
       <p :style="[pStyle, pStyle2]">查看患者详情</p>
       <p :style="pStyle">患者信息</p>
@@ -116,7 +105,6 @@
 <script>
 import STree from '@/components/Tree/Tree'
 import { STable } from '@/components'
-// import { getWarningList } from '@/api/infection'
 import { getExamineTree, getExamineList } from '@/api/examine'
 import descriptionItem from './descriptionItem'
 
@@ -208,7 +196,8 @@ export default {
       },
       warningTree: [],
       selectedRowKeys: [],
-      selectedRows: []
+      selectedRows: [],
+      tstatus: 0
     }
   },
   created () {
@@ -248,8 +237,38 @@ export default {
     onSelectChange (selectedRowKeys, selectedRows) {
       this.selectedRowKeys = selectedRowKeys
       this.selectedRows = selectedRows
+    },
+    handleEdit (row) {
+      const caseReport = {
+        infectionDiagCode: 'in13',
+        etiologicSpecName: '血液',
+        preFactor: [
+          'diabetes',
+          'antibiotic'
+        ],
+        advice: ''
+      }
+      console.log(row)
+      this.$router.push({ path: '/examine/examine-form', query: { caseReport: caseReport } })
+    },
+    handleEliminate (row) {
+      const caseReport = {
+        infectionDiagCode: 'in13',
+        etiologicSpecName: '血液',
+        preFactor: [
+          'diabetes',
+          'antibiotic'
+        ],
+        advice: ''
+      }
+      console.log(row)
+      this.$router.push({ path: '/examine/examine-form', query: { caseReport: caseReport } })
+    },
+    statusChange (e) {
+      console.log(e.target.value)
     }
   }
+
 }
 </script>
 

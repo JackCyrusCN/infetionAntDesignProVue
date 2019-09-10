@@ -12,13 +12,11 @@
     <!-- actions -->
     <template slot="action">
       <a-button-group style="margin-right: 4px;">
-        <a-button>操作</a-button>
-        <a-button>操作</a-button>
+        <a-button style="margin-left: 8px" @click="goBack()">返回</a-button>
         <a-button>
           <a-icon type="ellipsis" />
         </a-button>
       </a-button-group>
-      <a-button type="primary">主操作</a-button>
     </template>
 
     <a-card style="margin-top: 24px" :bordered="false" title="诊断信息">
@@ -209,6 +207,9 @@ export default {
     cancel (key) {
       const target = this.data.filter(item => item.key === key)[0]
       target.editable = false
+    },
+    goBack () {
+      this.$router.back()
     }
   }
 }

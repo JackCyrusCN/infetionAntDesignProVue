@@ -124,6 +124,7 @@
 
 <script>
 import { STable } from '@/components'
+import { getReportedList } from '@/api/register'
 
 export default {
   name: 'TableList',
@@ -145,16 +146,17 @@ export default {
         },
         {
           title: '姓名',
-          dataIndex: 'description',
-          scopedSlots: { customRender: 'description' }
+          dataIndex: 'patientName',
+          scopedSlots: { customRender: 'patientName' },
+          width: 90
         },
         {
           title: '感染诊断',
-          dataIndex: 'callNo',
-          width: '150px',
+          dataIndex: 'infectionDiag',
+          width: 200,
           sorter: true,
           // needTotal: true,
-          scopedSlots: { customRender: 'callNo' }
+          scopedSlots: { customRender: 'infectionDiag' }
           // customRender: (text) => text + ' 次'
         },
         {
@@ -170,7 +172,7 @@ export default {
               case 1:
                 return <a-tag color="blue">审批</a-tag>
               case 2:
-                return <a-tag color="red">退回</a-tag>
+                return <a-tag color="red">排除</a-tag>
               default:
                 return '未知'
             }
@@ -192,19 +194,23 @@ export default {
       ],
       // 加载数据方法 必须为 Promise 对象
       loadData: parameter => {
-        return this.$http.get('/service', {
-          params: Object.assign(parameter, this.queryParam)
-        }).then(res => {
-          return res.result
+        parameter = Object.assign(parameter, this.queryParam)
+        return getReportedList(parameter).then(r => {
+          return r.result
+        }).catch(err => {
+          console.log(err)
         })
+        // return this.$http.get('/service', {
+        //   params: Object.assign(parameter, this.queryParam)
+        // }).then(res => {
+        //   return res.result
+        // })
       },
-
       selectedRowKeys: [],
       selectedRows: []
     }
   },
   methods: {
-
     handleChange (value, key, column, record) {
       console.log(value, key, column)
       record[column.dataIndex] = value
@@ -230,7 +236,8 @@ export default {
         preFactor: [
           'diabetes',
           'antibiotic'
-        ]
+        ],
+        advice: 'advice'
       }
       this.$router.push({ path: '/iregister/reported/view', query: { caseReport: caseReport } })
     },
@@ -260,7 +267,6 @@ export default {
     cancel (row) {
       row.editable = false
     },
-
     onSelectChange (selectedRowKeys, selectedRows) {
       this.selectedRowKeys = selectedRowKeys
       this.selectedRows = selectedRows

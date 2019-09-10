@@ -1,6 +1,11 @@
 <template>
   <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
     <a-form @submit="handleSubmit" :form="form">
+      <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center">
+        <a-button htmlType="submit" type="primary">提交</a-button>
+        <a-button style="margin-left: 8px">打印</a-button>
+        <a-button style="margin-left: 8px" @click="goBack()">返回</a-button>
+      </a-form-item>
       <a-form-item
         label="诊断"
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
@@ -110,10 +115,6 @@
           :defaultValue="moment(getCurrentData())"
         />
       </a-form-item>
-      <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center">
-        <a-button htmlType="submit" type="primary">提交</a-button>
-        <a-button style="margin-left: 8px">打印</a-button>
-      </a-form-item>
     </a-form>
   </a-card>
 </template>
@@ -186,6 +187,9 @@ export default {
     },
     onChange4 (e) {
       // console.log(`checked = ${e.target.checked}`)
+    },
+    goBack () {
+      this.$router.back()
     }
   }
 }

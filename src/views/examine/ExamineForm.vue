@@ -3,10 +3,10 @@
     <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
       <a-form :form="form">
         <a-form-item :wrapperCol="{ span: 24 }" style="text-align: center">
+          <a-button htmlType="submit" type="primary" @click="handleSubmit()">提交</a-button>
           <a-button style="margin-left: 8px" @click="print()">打印</a-button>
           <a-button style="margin-left: 8px" @click="goBack()">返回</a-button>
         </a-form-item>
-
         <a-form-item
           v-bind="formItemLayout"
           label="审批建议/排除原因"
@@ -17,10 +17,8 @@
             placeholder="建议/原因"
             :autosize="{ minRows: 2, maxRows: 6 }"
             v-model="caseReport.advice"
-            :read-only="treadOnly"
           />
         </a-form-item>
-
         <a-form-item
           v-bind="formItemLayout"
           label="感染诊断"
@@ -77,7 +75,7 @@
             placeholder="标本名称"
             style="width: 200px"
             v-model="caseReport.etiologicSpecName"
-            :read-only="treadOnly"
+            disabled
           />
         </a-form-item>
         <a-form-item
@@ -114,7 +112,7 @@
             placeholder="备注"
             :autosize="{ minRows: 2, maxRows: 6 }"
             v-model="caseReport.preFactorElse"
-            :read-only="treadOnly"
+            disabled
           />
         </a-form-item>
       </a-form>
@@ -142,23 +140,9 @@ const plainOptions = [
   { label: '手术', value: 'surgery' },
   { label: '其它', value: 'else' }
 ]
-// const defaultCheckedList = [
-//   // 'diabetes',
-//   // 'antibiotic',
-//   // 'cirrhosis',
-//   // 'drug-addict',
-//   // 'radiotherapy',
-//   // 'immunosuppressor',
-//   // 'ventilator',
-//   // 'surgery',
-//   // 'else'
-// ]
 export default {
   data () {
     return {
-      // caseReport: {
-      //   infectionDiagCode: this.$route.query.caseReport.infectionDiagCode
-      // },
       caseReport: this.$route.query.caseReport,
       form: this.$form.createForm(this),
       pid: '',
@@ -179,8 +163,7 @@ export default {
       },
       alignCenter: {
         style: [{ 'text-align': 'center' }]
-      },
-      treadOnly: true
+      }
     }
   },
   computed: {
@@ -213,6 +196,8 @@ export default {
     },
     goBack () {
       this.$router.back()
+    },
+    handleSubmit () {
     }
   },
   mounted () {
