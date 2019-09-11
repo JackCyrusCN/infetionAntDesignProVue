@@ -266,6 +266,7 @@ export default {
     },
     statusChange (e) {
       console.log(e.target.value)
+      this.$refs.table.refresh(true)
     }
   }
 
