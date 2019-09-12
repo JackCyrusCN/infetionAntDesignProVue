@@ -2,7 +2,7 @@
   <div>
     <a-tabs defaultActiveKey="1" type="card">
       <a-tab-pane tab="在院病人情况" key="1" forceRender>
-        <div style="background-color: #ececec; padding: 20px;">
+        <div style="background-color: #ececec; padding: 20px;" >
           <a-row :gutter="12">
             <a-col :span="8">
               <a-table

@@ -4,7 +4,7 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.jpg" class="logo" alt="logo">
+            <img src="~@/assets/cloveroenLogo.png" class="logo" alt="logo">
             <span class="title">苜蓿草科技</span>
           </a>
         </div>

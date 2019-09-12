@@ -251,7 +251,7 @@ export default {
       })
     },
     loginSuccess (res) {
-      this.$router.push({ name: '/general' })
+      this.$router.push({ name: 'general' })
       this.isLoginError = false
       // 延迟 1 秒显示欢迎信息
       setTimeout(() => {
